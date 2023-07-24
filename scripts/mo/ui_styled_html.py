@@ -313,8 +313,10 @@ def record_details(record: Record) -> str:
 def records_cards(records: List) -> str:
     content = '<div class="mo-card-grid">'
 
+    nsfw_blur = env.nsfw_blur()
+
     for record in records:
-        contains_nsfw = any('nsfw' in group.lower() for group in record.groups)
+        contains_nsfw = any('nsfw' in group.lower() for group in record.groups) and nsfw_blur
         content += f'<div class="mo-card {"blur" if contains_nsfw else ""}">'
 
         preview_url = get_best_preview_url(record)

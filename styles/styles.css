@@ -475,7 +475,7 @@
     object-position: center;
 }
 
-.blur {
+.blur img {
     filter: blur(5px);
 }
 
