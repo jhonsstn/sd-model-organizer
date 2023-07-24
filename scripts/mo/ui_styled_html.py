@@ -314,7 +314,8 @@ def records_cards(records: List) -> str:
     content = '<div class="mo-card-grid">'
 
     for record in records:
-        content += '<div class="mo-card">'
+        contains_nsfw = any('nsfw' in group.lower() for group in record.groups)
+        content += f'<div class="mo-card {"blur" if contains_nsfw else ""}">'
 
         preview_url = get_best_preview_url(record)
         content += f'<img src="{preview_url}" alt="Preview Image" ' \
